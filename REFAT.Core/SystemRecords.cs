@@ -8,7 +8,7 @@ namespace REFAT.Core
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        public string UserId { get; set; }
+   
         public string DeviceName { get; set; }
         public string MachinId { get; set; }
         public string Title { get; set; }
@@ -18,6 +18,6 @@ namespace REFAT.Core
         //Navication
         public int UsersId { get; set; }//تسمية متعارف عليها  نفس اسم الكلاس و ثم اسم الحقل
 
-        public Users Users { get; set; }
+   //     public Users Users { get; set; }
     }
 }

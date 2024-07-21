@@ -82,7 +82,7 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.Users.ToList();
+                return db.Users.OrderByDescending(l=>l.Id).ToList();
             }
             catch 
             {
@@ -97,7 +97,8 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.Users.Where(l=>l.UserId == UserId).ToList();
+                return db.Users.Where(l=>l.UserId == UserId)
+                    .OrderByDescending(l=>l.Id).ToList();
             }
             catch
             {
@@ -122,9 +123,9 @@ namespace REFAT.Data.EF
                  || l.Phone.Contains(searchItem)
                  || l.FullName.Contains(searchItem)
                  || l.UserName.Contains(searchItem)
-                 || l.CreatedDate.ToShortDateString().Contains(searchItem)
-                 || l.EditedDate.ToShortDateString().Contains(searchItem)
-                 ).ToList();
+                 || l.CreatedDate.ToString().Contains(searchItem)
+                || l.EditedDate.ToString().Contains(searchItem)
+                 ).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {
@@ -144,9 +145,9 @@ namespace REFAT.Data.EF
                 || l.Phone.Contains(searchItem)
                 || l.FullName.Contains(searchItem)
                 || l.UserName.Contains(searchItem)
-                || l.CreatedDate.ToShortDateString().Contains(searchItem)
-                || l.EditedDate.ToShortDateString().Contains(searchItem)
-                 ).ToList();
+                || l.CreatedDate.ToString().Contains(searchItem)
+                || l.EditedDate.ToString().Contains(searchItem)
+                 ).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {

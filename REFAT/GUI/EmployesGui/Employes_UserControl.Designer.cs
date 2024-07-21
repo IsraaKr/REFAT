@@ -1,6 +1,7 @@
-﻿namespace REFAT.GUI.UsersGui
+﻿namespace REFAT.GUI.EmployesGui
 {
-    partial class Users_UserControl
+    
+    partial class Employes_UserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users_UserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employes_UserControl));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.button_Add = new System.Windows.Forms.Button();
@@ -308,7 +309,7 @@
             this.labelAllNo.Text = "...";
             this.labelAllNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Users_UserControl
+            // SalaryRate_UserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -318,7 +319,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Users_UserControl";
+            this.Name = "SalaryRate_UserControl";
             this.Size = new System.Drawing.Size(819, 387);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

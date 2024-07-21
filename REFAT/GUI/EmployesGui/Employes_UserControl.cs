@@ -13,42 +13,42 @@ using REFAT.Code.Helpers;
 using REFAT.GUI.LoadingGui;
 using System.Linq;
 
-namespace REFAT.GUI.UsersGui
+namespace REFAT.GUI.EmployesGui
 {
-    public partial class Users_UserControl : UserControl
+    public partial class Employes_UserControl : UserControl
     {
-        //singelton
-        private static Users_UserControl? user_UsersControl;
-        private Add_User_Form add_User_Form;//لمنع التكرار
+        //singelton 
+        private static Employes_UserControl? employes_UserControl;
+        private Add_Employes_Form Add_Employes_Form;//لمنع التكرار
         private static Main _main;
-        private IDataHelper<Users> dataHelper;
-        private List<Users> data;
+        private IDataHelper<SalaryRate> dataHelper;
+        private List<SalaryRate> data;
         private LoadingForm loading;
         private List<int> IdDeleteList;
 
-        public Users_UserControl()
+        public Employes_UserControl()
         {
             InitializeComponent();
-            dataHelper = new UsersEF();
-            data = new List<Users>();
+            dataHelper = new SalaryRateEF();
+            data = new List<SalaryRate>();
             IdDeleteList = new List<int>();
             LoadData();
         }
-        public static Users_UserControl instance(Main main)//تحاشي الاستنساخ المتعدد
+        public static Employes_UserControl instance(Main main)//تحاشي الاستنساخ المتعدد
         {
             _main = main;//مشان تحديد الأب
-            return user_UsersControl ?? (user_UsersControl = new Users_UserControl());//اذا قيمة فارغة أرجع نيو يوسر كونترول
+            return employes_UserControl ?? (employes_UserControl = new Employes_UserControl());//اذا قيمة فارغة أرجع نيو يوسر كونترول
         }
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            if (add_User_Form == null || add_User_Form.IsDisposed)
+            if (Add_Employes_Form == null || Add_Employes_Form.IsDisposed)
             {
-                add_User_Form = new Add_User_Form(_main, 0, this);
-                add_User_Form.Show();
+                Add_Employes_Form = new Add_Employes_Form(_main, 0, this);
+                Add_Employes_Form.Show();
             }
             else
-                add_User_Form.Focus();
+                Add_Employes_Form.Focus();
 
         }
         private void button_Edit_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace REFAT.GUI.UsersGui
                                 {
                                     await Task.Run(() => dataHelper.Delete(id));
                                     
-                                    SystemRecordHelper.Add("حذف مستخدم", $" تم حذف مستخدم  برقم تعريفي{id.ToString()} ");
+                                    SystemRecordHelper.Add("حذف درجة", $" تم حذف الدرجة الوظيفية  برقم تعريفي{id.ToString()} ");
 
                                 }
                                 ToastHelper.showDeleteToast();
@@ -144,7 +144,7 @@ namespace REFAT.GUI.UsersGui
                 if (LocalUser.Role == "Admin")
                 {
                     //get all data
-                    data = await Task.Run(() => dataHelper.GetAllData());
+                   data = await Task.Run(() => dataHelper.GetDataByUser(LocalUser.UserId));
                 }
                 else
                 {
@@ -189,12 +189,12 @@ namespace REFAT.GUI.UsersGui
         private void button_Export_dgv_Click(object sender, EventArgs e)
         {
             //get data
-            var data = (List<Users>)dgv.DataSource;
+            var data = (List<SalaryRate>)dgv.DataSource;
 
             ExportExcel(data);
         }
 
-        private void ExportExcel(List<Users> data)
+        private void ExportExcel(List<SalaryRate> data)
         {
             //define data table
             DataTable dt = new DataTable();
@@ -209,7 +209,7 @@ namespace REFAT.GUI.UsersGui
             dt = arrangedDataTable(dt);
 
             // send to export3
-            ExcelHelper.ExportExcel(dt, "Users");
+            ExcelHelper.ExportExcel(dt, "SalaryRate");
         }
 
         private DataTable arrangedDataTable(DataTable datatable)
@@ -218,42 +218,21 @@ namespace REFAT.GUI.UsersGui
             datatable.Columns["Id"].SetOrdinal(0);
             datatable.Columns["Id"].ColumnName = "تسلسل";
 
-            datatable.Columns["FullName"].SetOrdinal(1);
-            datatable.Columns["FullName"].ColumnName = "الاسم الكامل";
+            datatable.Columns["Degree"].SetOrdinal(1);
+            datatable.Columns["Degree"].ColumnName = "الدرجة ";
            
-            datatable.Columns["UserName"].SetOrdinal(2);
-            datatable.Columns["UserName"].ColumnName = "اسم المستخدم";
+            datatable.Columns["Salary"].SetOrdinal(2);
+            datatable.Columns["Salary"].ColumnName =$"الراتب الأسمي {Properties.Settings.Default.Currency}";
            
-            datatable.Columns["PassWord"].SetOrdinal(3);
-            datatable.Columns["PassWord"].ColumnName = "FullName";
-          
-            datatable.Columns["Role"].SetOrdinal(4);
-            datatable.Columns["Role"].ColumnName = "الصلاحية العامة";
-           
-            datatable.Columns["IsSecondaryUser"].SetOrdinal(5);
-            datatable.Columns["IsSecondaryUser"].ColumnName = "مستخدم ثانوي";
-           
-            datatable.Columns["UserId"].SetOrdinal(6);
-            datatable.Columns["UserId"].ColumnName = "معرف المستخدم";
-            
-            datatable.Columns["Phone"].SetOrdinal(7);
-            datatable.Columns["Phone"].ColumnName = "الهاتف";
-           
-            datatable.Columns["Address"].SetOrdinal(8);
-            datatable.Columns["Address"].ColumnName = "العنوان";
-          
-            datatable.Columns["Email"].SetOrdinal(9);
-            datatable.Columns["Email"].ColumnName = "الايميل";
-           
-            datatable.Columns["CreatedDate"].SetOrdinal(10);
-            datatable.Columns["CreatedDate"].ColumnName = "تاريخ الانشاء";
-          
-            datatable.Columns["EditedDate"].SetOrdinal(11);
-            datatable.Columns["EditedDate"].ColumnName = "تاريخ التعديل";
+            datatable.Columns["BonusYearRate"].SetOrdinal(3);
+            datatable.Columns["BonusYearRate"].ColumnName = $"العلاوة السنوية {Properties.Settings.Default.Currency}";
 
+            datatable.Columns["PromotionYear"].SetOrdinal(4);
+            datatable.Columns["PromotionYear"].ColumnName = "سنوات الترفيع ";
+           
+      
             //removed columns
-            datatable.Columns.Remove("Roles");
-            datatable.Columns.Remove("SystemRecords");
+            datatable.Columns.Remove("UsersId");
 
 
             return datatable;
@@ -270,8 +249,9 @@ namespace REFAT.GUI.UsersGui
                 //check if admin or not
                 if (LocalUser.Role == "Admin")
                 {
-                    //get all data
-                    data = await Task.Run(() => dataHelper.GetAllData());
+                    //get all data 
+                    //في الحالتين جلب الداتا نفسه ا
+                    data = await Task.Run(() => dataHelper.GetDataByUser(LocalUser.UserId));
                 }
                 else
                 {
@@ -333,7 +313,7 @@ namespace REFAT.GUI.UsersGui
                 if (LocalUser.Role == "Admin")
                 {
                     //get all data
-                    data = await Task.Run(() => dataHelper.SearchAll(searchItem));
+                    data = await Task.Run(() => dataHelper.SearchByUser(LocalUser.UserId, searchItem));
                 }
                 else
                 {
@@ -387,37 +367,27 @@ namespace REFAT.GUI.UsersGui
         private void SetColumns()
         {
             dgv.Columns[0].HeaderCell.Value = "المعرف";
-            dgv.Columns[1].HeaderCell.Value = "الاسم الكامل";
-            dgv.Columns[2].HeaderCell.Value = "اسم المستخدم";
-            dgv.Columns[3].HeaderCell.Value = "كلمة المرور";
-            dgv.Columns[4].HeaderCell.Value = "الصلاحية";
-            dgv.Columns[5].HeaderCell.Value = "هل المستخدم ثانوي";
-            dgv.Columns[6].HeaderCell.Value = "المعرف الأساس";
-            dgv.Columns[7].HeaderCell.Value = "الهاتف";
-            dgv.Columns[8].HeaderCell.Value = "الايميل";
-            dgv.Columns[9].HeaderCell.Value = "السكن";
-            dgv.Columns[10].HeaderCell.Value = "تاريخ الإنشاء";
-            dgv.Columns[11].HeaderCell.Value = "تاريخ التعديل";
+            dgv.Columns[1].HeaderCell.Value =  "الدرجة";
+            dgv.Columns[2].HeaderCell.Value = "الراتب الأسمي ";
+            dgv.Columns[3].HeaderCell.Value = "العلاوة السنوية ";
+            dgv.Columns[4].HeaderCell.Value = "سنوات الترفيع";
+         
             // visibal of columns
-            dgv.Columns[3].Visible = false;
             dgv.Columns[5].Visible = false;
-            dgv.Columns[6].Visible = false;
-            //dgv.Columns[12].Visible = false;
-            //dgv.Columns[13].Visible = false;
 
         }
         private void Edite()
         {
-            if (!dgvHelper.IsEmpty(dgv) && dgv.CurrentRow.Selected != false)
+            if (!dgvHelper.IsEmpty(dgv))
             {
                 int id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                if (add_User_Form == null || add_User_Form.IsDisposed)
+                if (Add_Employes_Form == null || Add_Employes_Form.IsDisposed)
                 {
-                    add_User_Form = new Add_User_Form(_main, id, this);
-                    add_User_Form.Show();
+                    Add_Employes_Form = new Add_Employes_Form(_main, id, this);
+                    Add_Employes_Form.Show();
                 }
                 else
-                    add_User_Form.Focus();
+                    Add_Employes_Form.Focus();
             }
             else
                 MsgHelper.ShowEmpteyDgv();
@@ -475,7 +445,7 @@ namespace REFAT.GUI.UsersGui
                     if (LocalUser.Role == "Admin")
                     {
                         //get all data
-                        data = await Task.Run(() => dataHelper.GetAllData());
+                       data = await Task.Run(() => dataHelper.GetDataByUser(LocalUser.UserId));
                     }
                     else
                     {

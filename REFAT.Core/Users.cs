@@ -22,7 +22,7 @@ namespace REFAT.Core
         //Navication
 
         public List<Roles> Roles { get; set; }
-        public List<SystemRecords> SystemRecords { get; set; }
+   //     public List<SystemRecords> SystemRecords { get; set; }
 
     }
 }

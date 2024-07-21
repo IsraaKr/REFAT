@@ -13,48 +13,33 @@ using REFAT.Code.Helpers;
 using REFAT.GUI.LoadingGui;
 using System.Linq;
 
-namespace REFAT.GUI.UsersGui
+namespace REFAT.GUI.SystemRecordGui
 {
-    public partial class Users_UserControl : UserControl
+    public partial class SystemRecord_UserControl : UserControl
     {
         //singelton
-        private static Users_UserControl? user_UsersControl;
-        private Add_User_Form add_User_Form;//لمنع التكرار
+        private static SystemRecord_UserControl? user_SystemRecordsControl;
         private static Main _main;
-        private IDataHelper<Users> dataHelper;
-        private List<Users> data;
+        private IDataHelper<SystemRecords> dataHelper;
+        private List<SystemRecords> data;
         private LoadingForm loading;
         private List<int> IdDeleteList;
 
-        public Users_UserControl()
+        public SystemRecord_UserControl()
         {
             InitializeComponent();
-            dataHelper = new UsersEF();
-            data = new List<Users>();
+            dataHelper = new SystemRecordsEF();
+            data = new List<SystemRecords>();
             IdDeleteList = new List<int>();
             LoadData();
         }
-        public static Users_UserControl instance(Main main)//تحاشي الاستنساخ المتعدد
+        public static SystemRecord_UserControl instance(Main main)//تحاشي الاستنساخ المتعدد
         {
             _main = main;//مشان تحديد الأب
-            return user_UsersControl ?? (user_UsersControl = new Users_UserControl());//اذا قيمة فارغة أرجع نيو يوسر كونترول
+            return user_SystemRecordsControl ?? (user_SystemRecordsControl = new SystemRecord_UserControl());//اذا قيمة فارغة أرجع نيو يوسر كونترول
         }
 
-        private void button_Add_Click(object sender, EventArgs e)
-        {
-            if (add_User_Form == null || add_User_Form.IsDisposed)
-            {
-                add_User_Form = new Add_User_Form(_main, 0, this);
-                add_User_Form.Show();
-            }
-            else
-                add_User_Form.Focus();
-
-        }
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-            Edite();
-        }
+  
         private async void button_Delet_ClickAsync(object sender, EventArgs e)
         {
             try
@@ -78,9 +63,6 @@ namespace REFAT.GUI.UsersGui
                                 foreach (int id in IdDeleteList)
                                 {
                                     await Task.Run(() => dataHelper.Delete(id));
-                                    
-                                    SystemRecordHelper.Add("حذف مستخدم", $" تم حذف مستخدم  برقم تعريفي{id.ToString()} ");
-
                                 }
                                 ToastHelper.showDeleteToast();
                                 LoadData();
@@ -131,7 +113,7 @@ namespace REFAT.GUI.UsersGui
         }
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Edite();
+           
         }
         private async void button_Export_All_Click(object sender, EventArgs e)
         {
@@ -189,12 +171,12 @@ namespace REFAT.GUI.UsersGui
         private void button_Export_dgv_Click(object sender, EventArgs e)
         {
             //get data
-            var data = (List<Users>)dgv.DataSource;
+            var data = (List<SystemRecords>)dgv.DataSource;
 
             ExportExcel(data);
         }
 
-        private void ExportExcel(List<Users> data)
+        private void ExportExcel(List<SystemRecords> data)
         {
             //define data table
             DataTable dt = new DataTable();
@@ -209,7 +191,7 @@ namespace REFAT.GUI.UsersGui
             dt = arrangedDataTable(dt);
 
             // send to export3
-            ExcelHelper.ExportExcel(dt, "Users");
+            ExcelHelper.ExportExcel(dt, "SystemRecords");
         }
 
         private DataTable arrangedDataTable(DataTable datatable)
@@ -221,35 +203,24 @@ namespace REFAT.GUI.UsersGui
             datatable.Columns["FullName"].SetOrdinal(1);
             datatable.Columns["FullName"].ColumnName = "الاسم الكامل";
            
-            datatable.Columns["UserName"].SetOrdinal(2);
-            datatable.Columns["UserName"].ColumnName = "اسم المستخدم";
-           
-            datatable.Columns["PassWord"].SetOrdinal(3);
-            datatable.Columns["PassWord"].ColumnName = "FullName";
+             datatable.Columns["DeviceName"].SetOrdinal(2);
+            datatable.Columns["DeviceName"].ColumnName = "اسم الجهاز";
           
-            datatable.Columns["Role"].SetOrdinal(4);
-            datatable.Columns["Role"].ColumnName = "الصلاحية العامة";
+            datatable.Columns["MachinId"].SetOrdinal(3);
+            datatable.Columns["MachinId"].ColumnName = " الماك ";
            
-            datatable.Columns["IsSecondaryUser"].SetOrdinal(5);
-            datatable.Columns["IsSecondaryUser"].ColumnName = "مستخدم ثانوي";
+            datatable.Columns["Title"].SetOrdinal(4);
+            datatable.Columns["Title"].ColumnName = "عنوان الحركة ";
            
-            datatable.Columns["UserId"].SetOrdinal(6);
-            datatable.Columns["UserId"].ColumnName = "معرف المستخدم";
+            datatable.Columns["Desiccation"].SetOrdinal(5);
+            datatable.Columns["Desiccation"].ColumnName = "وصف الحركة ";
             
-            datatable.Columns["Phone"].SetOrdinal(7);
-            datatable.Columns["Phone"].ColumnName = "الهاتف";
-           
-            datatable.Columns["Address"].SetOrdinal(8);
-            datatable.Columns["Address"].ColumnName = "العنوان";
-          
-            datatable.Columns["Email"].SetOrdinal(9);
-            datatable.Columns["Email"].ColumnName = "الايميل";
-           
-            datatable.Columns["CreatedDate"].SetOrdinal(10);
-            datatable.Columns["CreatedDate"].ColumnName = "تاريخ الانشاء";
-          
-            datatable.Columns["EditedDate"].SetOrdinal(11);
-            datatable.Columns["EditedDate"].ColumnName = "تاريخ التعديل";
+            datatable.Columns["CreatedDate"].SetOrdinal(6);
+            datatable.Columns["CreatedDate"].ColumnName = "تاريخ الحركة";
+
+
+            datatable.Columns["UsersId"].SetOrdinal(7);
+            datatable.Columns["UsersId"].ColumnName = "معرف المستخدم";
 
             //removed columns
             datatable.Columns.Remove("Roles");
@@ -388,42 +359,15 @@ namespace REFAT.GUI.UsersGui
         {
             dgv.Columns[0].HeaderCell.Value = "المعرف";
             dgv.Columns[1].HeaderCell.Value = "الاسم الكامل";
-            dgv.Columns[2].HeaderCell.Value = "اسم المستخدم";
-            dgv.Columns[3].HeaderCell.Value = "كلمة المرور";
-            dgv.Columns[4].HeaderCell.Value = "الصلاحية";
-            dgv.Columns[5].HeaderCell.Value = "هل المستخدم ثانوي";
-            dgv.Columns[6].HeaderCell.Value = "المعرف الأساس";
-            dgv.Columns[7].HeaderCell.Value = "الهاتف";
-            dgv.Columns[8].HeaderCell.Value = "الايميل";
-            dgv.Columns[9].HeaderCell.Value = "السكن";
-            dgv.Columns[10].HeaderCell.Value = "تاريخ الإنشاء";
-            dgv.Columns[11].HeaderCell.Value = "تاريخ التعديل";
-            // visibal of columns
-            dgv.Columns[3].Visible = false;
-            dgv.Columns[5].Visible = false;
-            dgv.Columns[6].Visible = false;
-            //dgv.Columns[12].Visible = false;
-            //dgv.Columns[13].Visible = false;
+            dgv.Columns[2].HeaderCell.Value = "اسم الجهاز";
+            dgv.Columns[3].HeaderCell.Value = " ماك ادريس";
+            dgv.Columns[4].HeaderCell.Value = "العنوان";
+            dgv.Columns[5].HeaderCell.Value = "الوصف";
+            dgv.Columns[6].HeaderCell.Value =  "تاريخ الحركة";
+            dgv.Columns[7].HeaderCell.Value = "المستخدم";
+           
 
         }
-        private void Edite()
-        {
-            if (!dgvHelper.IsEmpty(dgv) && dgv.CurrentRow.Selected != false)
-            {
-                int id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                if (add_User_Form == null || add_User_Form.IsDisposed)
-                {
-                    add_User_Form = new Add_User_Form(_main, id, this);
-                    add_User_Form.Show();
-                }
-                else
-                    add_User_Form.Focus();
-            }
-            else
-                MsgHelper.ShowEmpteyDgv();
-        }
-
-
 
         private void textBox_Search_KeyDown(object sender, KeyEventArgs e)
         {

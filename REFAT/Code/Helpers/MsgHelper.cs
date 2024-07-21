@@ -55,5 +55,12 @@ namespace REFAT.Code.Helpers
            else 
                 return false;
         }
+        public static void ShowNumberValid()
+        {
+            MessageBox.Show("يجب أن تقوم بإدخال قيمة رقمية فقط "
+                   , "ادخال غير صحيح"
+                   , MessageBoxButtons.OK
+                   , MessageBoxIcon.Information);
+        }
     }
 }

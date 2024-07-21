@@ -83,7 +83,7 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.Roles.ToList();
+                return db.Roles.OrderByDescending(l => l.Id).ToList();
             }
             catch 
             {
@@ -98,7 +98,7 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.Roles.Where(l=>l.UsersId.ToString() == UserId).ToList();
+                return db.Roles.Where(l=>l.UsersId.ToString() == UserId).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {
@@ -116,8 +116,8 @@ namespace REFAT.Data.EF
         {
             try
             {
-                return db.Roles.Where (l=> l.Id.ToString() == searchItem 
-                 )  .ToList();
+                return db.Roles.Where (l=> l.Id.ToString() == searchItem
+                 ).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {
@@ -130,7 +130,9 @@ namespace REFAT.Data.EF
         {
             try
             {
-                return db.Roles.Where(u=> u.UsersId.ToString() == UserId).Where(l => l.Id.ToString() == searchItem    ) .ToList();
+                return db.Roles.Where(u=> u.UsersId.ToString() == UserId)
+                    .Where(l => l.Id.ToString() == searchItem)
+                    .OrderByDescending(l => l.Id).ToList();
             }
             catch
             {

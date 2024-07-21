@@ -172,7 +172,7 @@ namespace REFAT
             // 
             // buttonRetirment
             // 
-            this.buttonRetirment.Location = new System.Drawing.Point(966, 60);
+            this.buttonRetirment.Location = new System.Drawing.Point(962, 60);
             this.buttonRetirment.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRetirment.Name = "buttonRetirment";
             this.buttonRetirment.Size = new System.Drawing.Size(181, 40);
@@ -182,7 +182,7 @@ namespace REFAT
             // 
             // buttonSystemRecord
             // 
-            this.buttonSystemRecord.Location = new System.Drawing.Point(775, 60);
+            this.buttonSystemRecord.Location = new System.Drawing.Point(771, 60);
             this.buttonSystemRecord.Margin = new System.Windows.Forms.Padding(5);
             this.buttonSystemRecord.Name = "buttonSystemRecord";
             this.buttonSystemRecord.Size = new System.Drawing.Size(181, 40);
@@ -190,13 +190,12 @@ namespace REFAT
             this.buttonSystemRecord.Text = "سجل النظام";
             this.buttonSystemRecord.UseVisualStyleBackColor = true;
             // 
-
             // panelContainer
             // 
+            this.panelContainer.BackColor = System.Drawing.Color.White;
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.BackColor = System.Drawing.Color.White;
             this.panelContainer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.panelContainer.Size = new System.Drawing.Size(1370, 636);
             this.panelContainer.TabIndex = 1;

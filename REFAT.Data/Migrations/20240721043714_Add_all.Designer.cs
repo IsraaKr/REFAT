@@ -10,8 +10,8 @@ using REFAT.Data.EF;
 namespace REFAT.Data.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240528131914_AddUsersRolesSystemrecord")]
-    partial class AddUsersRolesSystemrecord
+    [Migration("20240721043714_Add_all")]
+    partial class Add_all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,66 @@ namespace REFAT.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("REFAT.Core.Employes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CurrentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CurrentDegree")
+                        .HasColumnType("int");
+
+                    b.Property<float>("CurrentSalary")
+                        .HasColumnType("real");
+
+                    b.Property<int>("CurrentStage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmpSate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobTittle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastPromotionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("NextDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NextDegree")
+                        .HasColumnType("int");
+
+                    b.Property<float>("NextSalary")
+                        .HasColumnType("real");
+
+                    b.Property<int>("NextStage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employes");
+                });
 
             modelBuilder.Entity("REFAT.Core.Roles", b =>
                 {
@@ -42,6 +102,33 @@ namespace REFAT.Data.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("REFAT.Core.SalaryRate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("BonusYearRate")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Degree")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PromotionYear")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Salary")
+                        .HasColumnType("real");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SalaryRate");
                 });
 
             modelBuilder.Entity("REFAT.Core.SystemRecords", b =>
@@ -69,15 +156,10 @@ namespace REFAT.Data.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("UsersId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UsersId");
 
                     b.ToTable("SystemRecords");
                 });
@@ -131,15 +213,6 @@ namespace REFAT.Data.Migrations
                 {
                     b.HasOne("REFAT.Core.Users", "Users")
                         .WithMany("Roles")
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("REFAT.Core.SystemRecords", b =>
-                {
-                    b.HasOne("REFAT.Core.Users", "Users")
-                        .WithMany("SystemRecords")
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

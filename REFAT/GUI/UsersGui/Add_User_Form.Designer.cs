@@ -52,23 +52,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel_Roles = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox_Add = new System.Windows.Forms.CheckBox();
-            this.checkBox_Edite = new System.Windows.Forms.CheckBox();
             this.checkBox_delete = new System.Windows.Forms.CheckBox();
-            this.checkBox_Search = new System.Windows.Forms.CheckBox();
-            this.checkBox_Print = new System.Windows.Forms.CheckBox();
+            this.checkBox_Edite = new System.Windows.Forms.CheckBox();
             this.checkBox_Export = new System.Windows.Forms.CheckBox();
+            this.checkBox_Print = new System.Windows.Forms.CheckBox();
+            this.checkBox_Search = new System.Windows.Forms.CheckBox();
+            this.checkBox_MainSearch = new System.Windows.Forms.CheckBox();
             this.checkBox_Main = new System.Windows.Forms.CheckBox();
-            this.checkBox_Report = new System.Windows.Forms.CheckBox();
             this.checkBox_Salarey = new System.Windows.Forms.CheckBox();
+            this.checkBox_Emp = new System.Windows.Forms.CheckBox();
             this.checkBox_User = new System.Windows.Forms.CheckBox();
-            this.checkBox_Help = new System.Windows.Forms.CheckBox();
+            this.checkBox_Report = new System.Windows.Forms.CheckBox();
             this.checkBox_Setting = new System.Windows.Forms.CheckBox();
             this.checkBox_About = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox_MainSearch = new System.Windows.Forms.CheckBox();
-            this.checkBox_Emp = new System.Windows.Forms.CheckBox();
+            this.checkBox_Help = new System.Windows.Forms.CheckBox();
             this.checkBox_Retierment = new System.Windows.Forms.CheckBox();
             this.checkBox_SystemRecord = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -114,24 +114,25 @@
             this.comboBox_UsersId.FormattingEnabled = true;
             this.comboBox_UsersId.Location = new System.Drawing.Point(6, 62);
             this.comboBox_UsersId.Name = "comboBox_UsersId";
-            this.comboBox_UsersId.Size = new System.Drawing.Size(357, 27);
+            this.comboBox_UsersId.Size = new System.Drawing.Size(357, 32);
             this.comboBox_UsersId.TabIndex = 6;
             // 
             // checkBoxSeconderyUser
             // 
             this.checkBoxSeconderyUser.AutoSize = true;
-            this.checkBoxSeconderyUser.Location = new System.Drawing.Point(197, 31);
+            this.checkBoxSeconderyUser.Location = new System.Drawing.Point(158, 24);
             this.checkBoxSeconderyUser.Name = "checkBoxSeconderyUser";
-            this.checkBoxSeconderyUser.Size = new System.Drawing.Size(166, 23);
+            this.checkBoxSeconderyUser.Size = new System.Drawing.Size(203, 28);
             this.checkBoxSeconderyUser.TabIndex = 5;
             this.checkBoxSeconderyUser.Text = "هل المستخدم ثانوي";
             this.checkBoxSeconderyUser.UseVisualStyleBackColor = true;
+            this.checkBoxSeconderyUser.CheckedChanged += new System.EventHandler(this.checkBoxSeconderyUser_CheckedChanged);
             // 
             // textBox_Adress
             // 
             this.textBox_Adress.Location = new System.Drawing.Point(5, 280);
             this.textBox_Adress.Name = "textBox_Adress";
-            this.textBox_Adress.Size = new System.Drawing.Size(359, 27);
+            this.textBox_Adress.Size = new System.Drawing.Size(359, 32);
             this.textBox_Adress.TabIndex = 9;
             // 
             // label6
@@ -139,7 +140,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(299, 252);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 19);
+            this.label6.Size = new System.Drawing.Size(72, 24);
             this.label6.TabIndex = 0;
             this.label6.Text = "العنوان:";
             // 
@@ -147,7 +148,7 @@
             // 
             this.textBox_Email.Location = new System.Drawing.Point(6, 206);
             this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(359, 27);
+            this.textBox_Email.Size = new System.Drawing.Size(359, 32);
             this.textBox_Email.TabIndex = 8;
             // 
             // label5
@@ -155,7 +156,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(291, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 19);
+            this.label5.Size = new System.Drawing.Size(73, 24);
             this.label5.TabIndex = 0;
             this.label5.Text = "الايميل:";
             // 
@@ -163,7 +164,7 @@
             // 
             this.textBox_Phone.Location = new System.Drawing.Point(6, 129);
             this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.Size = new System.Drawing.Size(359, 27);
+            this.textBox_Phone.Size = new System.Drawing.Size(359, 32);
             this.textBox_Phone.TabIndex = 7;
             // 
             // label4
@@ -171,7 +172,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(296, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 19);
+            this.label4.Size = new System.Drawing.Size(69, 24);
             this.label4.TabIndex = 0;
             this.label4.Text = "الهاتف:";
             // 
@@ -201,16 +202,15 @@
             this.comboBox_Role.FormattingEnabled = true;
             this.comboBox_Role.Location = new System.Drawing.Point(9, 280);
             this.comboBox_Role.Name = "comboBox_Role";
-            this.comboBox_Role.Size = new System.Drawing.Size(357, 27);
+            this.comboBox_Role.Size = new System.Drawing.Size(357, 32);
             this.comboBox_Role.TabIndex = 4;
-
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(228, 252);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 19);
+            this.label7.Size = new System.Drawing.Size(142, 24);
             this.label7.TabIndex = 0;
             this.label7.Text = "الصلاحية العامة:";
             // 
@@ -220,7 +220,7 @@
             this.label10.ForeColor = System.Drawing.Color.Red;
             this.label10.Location = new System.Drawing.Point(235, 179);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(18, 19);
+            this.label10.Size = new System.Drawing.Size(21, 24);
             this.label10.TabIndex = 2;
             this.label10.Text = "*";
             // 
@@ -230,7 +230,7 @@
             this.label9.ForeColor = System.Drawing.Color.Red;
             this.label9.Location = new System.Drawing.Point(194, 102);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(18, 19);
+            this.label9.Size = new System.Drawing.Size(21, 24);
             this.label9.TabIndex = 2;
             this.label9.Text = "*";
             // 
@@ -240,7 +240,7 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(221, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(18, 19);
+            this.label8.Size = new System.Drawing.Size(21, 24);
             this.label8.TabIndex = 2;
             this.label8.Text = "*";
             // 
@@ -248,7 +248,7 @@
             // 
             this.textBox_PassWord.Location = new System.Drawing.Point(11, 206);
             this.textBox_PassWord.Name = "textBox_PassWord";
-            this.textBox_PassWord.Size = new System.Drawing.Size(359, 27);
+            this.textBox_PassWord.Size = new System.Drawing.Size(359, 32);
             this.textBox_PassWord.TabIndex = 3;
             // 
             // label3
@@ -256,7 +256,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(262, 178);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 19);
+            this.label3.Size = new System.Drawing.Size(109, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "كلمة المرور:";
             // 
@@ -264,7 +264,7 @@
             // 
             this.textBox_UserName.Location = new System.Drawing.Point(12, 129);
             this.textBox_UserName.Name = "textBox_UserName";
-            this.textBox_UserName.Size = new System.Drawing.Size(359, 27);
+            this.textBox_UserName.Size = new System.Drawing.Size(359, 32);
             this.textBox_UserName.TabIndex = 2;
             // 
             // label2
@@ -272,7 +272,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(221, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 19);
+            this.label2.Size = new System.Drawing.Size(150, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "اسم المستخدم:";
             // 
@@ -280,7 +280,7 @@
             // 
             this.textBoxFull_name.Location = new System.Drawing.Point(6, 56);
             this.textBoxFull_name.Name = "textBoxFull_name";
-            this.textBoxFull_name.Size = new System.Drawing.Size(359, 27);
+            this.textBoxFull_name.Size = new System.Drawing.Size(359, 32);
             this.textBoxFull_name.TabIndex = 1;
             // 
             // label1
@@ -288,7 +288,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(245, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 19);
+            this.label1.Size = new System.Drawing.Size(126, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "الاسم الكامل:";
             // 
@@ -313,11 +313,11 @@
             this.flowLayoutPanel_Roles.Controls.Add(this.checkBox_Retierment);
             this.flowLayoutPanel_Roles.Controls.Add(this.checkBox_SystemRecord);
             this.flowLayoutPanel_Roles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel_Roles.Location = new System.Drawing.Point(3, 23);
+            this.flowLayoutPanel_Roles.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel_Roles.Name = "flowLayoutPanel_Roles";
             this.flowLayoutPanel_Roles.Padding = new System.Windows.Forms.Padding(3);
             this.flowLayoutPanel_Roles.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel_Roles.Size = new System.Drawing.Size(743, 122);
+            this.flowLayoutPanel_Roles.Size = new System.Drawing.Size(743, 117);
             this.flowLayoutPanel_Roles.TabIndex = 1;
             // 
             // checkBox_Add
@@ -325,141 +325,153 @@
             this.checkBox_Add.AutoSize = true;
             this.checkBox_Add.Checked = true;
             this.checkBox_Add.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Add.Location = new System.Drawing.Point(669, 6);
+            this.checkBox_Add.Location = new System.Drawing.Point(636, 6);
             this.checkBox_Add.Name = "checkBox_Add";
-            this.checkBox_Add.Size = new System.Drawing.Size(65, 23);
+            this.checkBox_Add.Size = new System.Drawing.Size(77, 28);
             this.checkBox_Add.TabIndex = 2;
             this.checkBox_Add.Text = "إضافة";
             this.checkBox_Add.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Edite
-            // 
-            this.checkBox_Edite.AutoSize = true;
-            this.checkBox_Edite.Checked = true;
-            this.checkBox_Edite.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Edite.Location = new System.Drawing.Point(530, 6);
-            this.checkBox_Edite.Name = "checkBox_Edite";
-            this.checkBox_Edite.Size = new System.Drawing.Size(65, 23);
-            this.checkBox_Edite.TabIndex = 2;
-            this.checkBox_Edite.Text = "تعديل";
-            this.checkBox_Edite.UseVisualStyleBackColor = true;
             // 
             // checkBox_delete
             // 
             this.checkBox_delete.AutoSize = true;
             this.checkBox_delete.Checked = true;
             this.checkBox_delete.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_delete.Location = new System.Drawing.Point(601, 6);
+            this.checkBox_delete.Location = new System.Drawing.Point(557, 6);
             this.checkBox_delete.Name = "checkBox_delete";
-            this.checkBox_delete.Size = new System.Drawing.Size(62, 23);
+            this.checkBox_delete.Size = new System.Drawing.Size(73, 28);
             this.checkBox_delete.TabIndex = 2;
             this.checkBox_delete.Text = "حذف";
             this.checkBox_delete.UseVisualStyleBackColor = true;
             // 
-            // checkBox_Search
+            // checkBox_Edite
             // 
-            this.checkBox_Search.AutoSize = true;
-            this.checkBox_Search.Checked = true;
-            this.checkBox_Search.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Search.Location = new System.Drawing.Point(322, 6);
-            this.checkBox_Search.Name = "checkBox_Search";
-            this.checkBox_Search.Size = new System.Drawing.Size(58, 23);
-            this.checkBox_Search.TabIndex = 2;
-            this.checkBox_Search.Text = "بحث";
-            this.checkBox_Search.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Print
-            // 
-            this.checkBox_Print.AutoSize = true;
-            this.checkBox_Print.Checked = true;
-            this.checkBox_Print.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Print.Location = new System.Drawing.Point(386, 6);
-            this.checkBox_Print.Name = "checkBox_Print";
-            this.checkBox_Print.Size = new System.Drawing.Size(68, 23);
-            this.checkBox_Print.TabIndex = 2;
-            this.checkBox_Print.Text = "طباعة";
-            this.checkBox_Print.UseVisualStyleBackColor = true;
+            this.checkBox_Edite.AutoSize = true;
+            this.checkBox_Edite.Checked = true;
+            this.checkBox_Edite.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Edite.Location = new System.Drawing.Point(472, 6);
+            this.checkBox_Edite.Name = "checkBox_Edite";
+            this.checkBox_Edite.Size = new System.Drawing.Size(79, 28);
+            this.checkBox_Edite.TabIndex = 2;
+            this.checkBox_Edite.Text = "تعديل";
+            this.checkBox_Edite.UseVisualStyleBackColor = true;
             // 
             // checkBox_Export
             // 
             this.checkBox_Export.AutoSize = true;
             this.checkBox_Export.Checked = true;
             this.checkBox_Export.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Export.Location = new System.Drawing.Point(460, 6);
+            this.checkBox_Export.Location = new System.Drawing.Point(388, 6);
             this.checkBox_Export.Name = "checkBox_Export";
-            this.checkBox_Export.Size = new System.Drawing.Size(64, 23);
+            this.checkBox_Export.Size = new System.Drawing.Size(78, 28);
             this.checkBox_Export.TabIndex = 2;
             this.checkBox_Export.Text = "تصدير";
             this.checkBox_Export.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Print
+            // 
+            this.checkBox_Print.AutoSize = true;
+            this.checkBox_Print.Checked = true;
+            this.checkBox_Print.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Print.Location = new System.Drawing.Point(301, 6);
+            this.checkBox_Print.Name = "checkBox_Print";
+            this.checkBox_Print.Size = new System.Drawing.Size(81, 28);
+            this.checkBox_Print.TabIndex = 2;
+            this.checkBox_Print.Text = "طباعة";
+            this.checkBox_Print.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Search
+            // 
+            this.checkBox_Search.AutoSize = true;
+            this.checkBox_Search.Checked = true;
+            this.checkBox_Search.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Search.Location = new System.Drawing.Point(224, 6);
+            this.checkBox_Search.Name = "checkBox_Search";
+            this.checkBox_Search.Size = new System.Drawing.Size(71, 28);
+            this.checkBox_Search.TabIndex = 2;
+            this.checkBox_Search.Text = "بحث";
+            this.checkBox_Search.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_MainSearch
+            // 
+            this.checkBox_MainSearch.AutoSize = true;
+            this.checkBox_MainSearch.Checked = true;
+            this.checkBox_MainSearch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_MainSearch.Location = new System.Drawing.Point(452, 40);
+            this.checkBox_MainSearch.Name = "checkBox_MainSearch";
+            this.checkBox_MainSearch.Size = new System.Drawing.Size(261, 28);
+            this.checkBox_MainSearch.TabIndex = 3;
+            this.checkBox_MainSearch.Text = "البحث في الصفحة الرئيسية";
+            this.checkBox_MainSearch.UseVisualStyleBackColor = true;
             // 
             // checkBox_Main
             // 
             this.checkBox_Main.AutoSize = true;
             this.checkBox_Main.Checked = true;
             this.checkBox_Main.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Main.Location = new System.Drawing.Point(594, 35);
+            this.checkBox_Main.Location = new System.Drawing.Point(276, 40);
             this.checkBox_Main.Name = "checkBox_Main";
-            this.checkBox_Main.Size = new System.Drawing.Size(140, 23);
+            this.checkBox_Main.Size = new System.Drawing.Size(170, 28);
             this.checkBox_Main.TabIndex = 2;
             this.checkBox_Main.Text = "الصفحة الرئيسية";
             this.checkBox_Main.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Report
-            // 
-            this.checkBox_Report.AutoSize = true;
-            this.checkBox_Report.Checked = true;
-            this.checkBox_Report.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Report.Location = new System.Drawing.Point(178, 35);
-            this.checkBox_Report.Name = "checkBox_Report";
-            this.checkBox_Report.Size = new System.Drawing.Size(73, 23);
-            this.checkBox_Report.TabIndex = 2;
-            this.checkBox_Report.Text = "التقارير";
-            this.checkBox_Report.UseVisualStyleBackColor = true;
             // 
             // checkBox_Salarey
             // 
             this.checkBox_Salarey.AutoSize = true;
             this.checkBox_Salarey.Checked = true;
             this.checkBox_Salarey.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Salarey.Location = new System.Drawing.Point(476, 35);
+            this.checkBox_Salarey.Location = new System.Drawing.Point(134, 40);
             this.checkBox_Salarey.Name = "checkBox_Salarey";
-            this.checkBox_Salarey.Size = new System.Drawing.Size(112, 23);
+            this.checkBox_Salarey.Size = new System.Drawing.Size(136, 28);
             this.checkBox_Salarey.TabIndex = 2;
             this.checkBox_Salarey.Text = "سلم الرواتب";
             this.checkBox_Salarey.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Emp
+            // 
+            this.checkBox_Emp.AutoSize = true;
+            this.checkBox_Emp.Checked = true;
+            this.checkBox_Emp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Emp.Location = new System.Drawing.Point(19, 40);
+            this.checkBox_Emp.Name = "checkBox_Emp";
+            this.checkBox_Emp.Size = new System.Drawing.Size(109, 28);
+            this.checkBox_Emp.TabIndex = 4;
+            this.checkBox_Emp.Text = "الموظفين";
+            this.checkBox_Emp.UseVisualStyleBackColor = true;
             // 
             // checkBox_User
             // 
             this.checkBox_User.AutoSize = true;
             this.checkBox_User.Checked = true;
             this.checkBox_User.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_User.Location = new System.Drawing.Point(257, 35);
+            this.checkBox_User.Location = new System.Drawing.Point(573, 74);
             this.checkBox_User.Name = "checkBox_User";
-            this.checkBox_User.Size = new System.Drawing.Size(116, 23);
+            this.checkBox_User.Size = new System.Drawing.Size(140, 28);
             this.checkBox_User.TabIndex = 2;
             this.checkBox_User.Text = "المستخدمين";
             this.checkBox_User.UseVisualStyleBackColor = true;
             // 
-            // checkBox_Help
+            // checkBox_Report
             // 
-            this.checkBox_Help.AutoSize = true;
-            this.checkBox_Help.Checked = true;
-            this.checkBox_Help.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Help.Location = new System.Drawing.Point(532, 64);
-            this.checkBox_Help.Name = "checkBox_Help";
-            this.checkBox_Help.Size = new System.Drawing.Size(95, 23);
-            this.checkBox_Help.TabIndex = 2;
-            this.checkBox_Help.Text = "المساعدة";
-            this.checkBox_Help.UseVisualStyleBackColor = true;
+            this.checkBox_Report.AutoSize = true;
+            this.checkBox_Report.Checked = true;
+            this.checkBox_Report.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Report.Location = new System.Drawing.Point(480, 74);
+            this.checkBox_Report.Name = "checkBox_Report";
+            this.checkBox_Report.Size = new System.Drawing.Size(87, 28);
+            this.checkBox_Report.TabIndex = 2;
+            this.checkBox_Report.Text = "التقارير";
+            this.checkBox_Report.UseVisualStyleBackColor = true;
             // 
             // checkBox_Setting
             // 
             this.checkBox_Setting.AutoSize = true;
             this.checkBox_Setting.Checked = true;
             this.checkBox_Setting.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Setting.Location = new System.Drawing.Point(84, 35);
+            this.checkBox_Setting.Location = new System.Drawing.Point(367, 74);
             this.checkBox_Setting.Name = "checkBox_Setting";
-            this.checkBox_Setting.Size = new System.Drawing.Size(88, 23);
+            this.checkBox_Setting.Size = new System.Drawing.Size(107, 28);
             this.checkBox_Setting.TabIndex = 2;
             this.checkBox_Setting.Text = "الإعدادات";
             this.checkBox_Setting.UseVisualStyleBackColor = true;
@@ -469,12 +481,48 @@
             this.checkBox_About.AutoSize = true;
             this.checkBox_About.Checked = true;
             this.checkBox_About.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_About.Location = new System.Drawing.Point(633, 64);
+            this.checkBox_About.Location = new System.Drawing.Point(238, 74);
             this.checkBox_About.Name = "checkBox_About";
-            this.checkBox_About.Size = new System.Drawing.Size(101, 23);
+            this.checkBox_About.Size = new System.Drawing.Size(123, 28);
             this.checkBox_About.TabIndex = 2;
             this.checkBox_About.Text = "حول النظام";
             this.checkBox_About.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Help
+            // 
+            this.checkBox_Help.AutoSize = true;
+            this.checkBox_Help.Checked = true;
+            this.checkBox_Help.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Help.Location = new System.Drawing.Point(118, 74);
+            this.checkBox_Help.Name = "checkBox_Help";
+            this.checkBox_Help.Size = new System.Drawing.Size(114, 28);
+            this.checkBox_Help.TabIndex = 2;
+            this.checkBox_Help.Text = "المساعدة";
+            this.checkBox_Help.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Retierment
+            // 
+            this.checkBox_Retierment.AutoSize = true;
+            this.checkBox_Retierment.Checked = true;
+            this.checkBox_Retierment.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Retierment.Location = new System.Drawing.Point(591, 108);
+            this.checkBox_Retierment.Name = "checkBox_Retierment";
+            this.checkBox_Retierment.Size = new System.Drawing.Size(122, 28);
+            this.checkBox_Retierment.TabIndex = 5;
+            this.checkBox_Retierment.Text = "المتقاعدين";
+            this.checkBox_Retierment.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_SystemRecord
+            // 
+            this.checkBox_SystemRecord.AutoSize = true;
+            this.checkBox_SystemRecord.Checked = true;
+            this.checkBox_SystemRecord.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_SystemRecord.Location = new System.Drawing.Point(449, 108);
+            this.checkBox_SystemRecord.Name = "checkBox_SystemRecord";
+            this.checkBox_SystemRecord.Size = new System.Drawing.Size(136, 28);
+            this.checkBox_SystemRecord.TabIndex = 6;
+            this.checkBox_SystemRecord.Text = "سجل النظام";
+            this.checkBox_SystemRecord.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -487,54 +535,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "الصلاحيات:";
-            // 
-            // checkBox_MainSearch
-            // 
-            this.checkBox_MainSearch.AutoSize = true;
-            this.checkBox_MainSearch.Checked = true;
-            this.checkBox_MainSearch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_MainSearch.Location = new System.Drawing.Point(102, 6);
-            this.checkBox_MainSearch.Name = "checkBox_MainSearch";
-            this.checkBox_MainSearch.Size = new System.Drawing.Size(214, 23);
-            this.checkBox_MainSearch.TabIndex = 3;
-            this.checkBox_MainSearch.Text = "البحث في الصفحة الرئيسية";
-            this.checkBox_MainSearch.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Emp
-            // 
-            this.checkBox_Emp.AutoSize = true;
-            this.checkBox_Emp.Checked = true;
-            this.checkBox_Emp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Emp.Location = new System.Drawing.Point(379, 35);
-            this.checkBox_Emp.Name = "checkBox_Emp";
-            this.checkBox_Emp.Size = new System.Drawing.Size(91, 23);
-            this.checkBox_Emp.TabIndex = 4;
-            this.checkBox_Emp.Text = "الموظفين";
-            this.checkBox_Emp.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Retierment
-            // 
-            this.checkBox_Retierment.AutoSize = true;
-            this.checkBox_Retierment.Checked = true;
-            this.checkBox_Retierment.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Retierment.Location = new System.Drawing.Point(426, 64);
-            this.checkBox_Retierment.Name = "checkBox_Retierment";
-            this.checkBox_Retierment.Size = new System.Drawing.Size(100, 23);
-            this.checkBox_Retierment.TabIndex = 5;
-            this.checkBox_Retierment.Text = "المتقاعدين";
-            this.checkBox_Retierment.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_SystemRecord
-            // 
-            this.checkBox_SystemRecord.AutoSize = true;
-            this.checkBox_SystemRecord.Checked = true;
-            this.checkBox_SystemRecord.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_SystemRecord.Location = new System.Drawing.Point(308, 64);
-            this.checkBox_SystemRecord.Name = "checkBox_SystemRecord";
-            this.checkBox_SystemRecord.Size = new System.Drawing.Size(112, 23);
-            this.checkBox_SystemRecord.TabIndex = 6;
-            this.checkBox_SystemRecord.Text = "سجل النظام";
-            this.checkBox_SystemRecord.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -568,13 +568,13 @@
             // 
             // Add_User_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 540);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

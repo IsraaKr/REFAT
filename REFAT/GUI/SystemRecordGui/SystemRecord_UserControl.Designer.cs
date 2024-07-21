@@ -1,6 +1,6 @@
-﻿namespace REFAT.GUI.UsersGui
+﻿namespace REFAT.GUI.SystemRecordGui
 {
-    partial class Users_UserControl
+    partial class SystemRecord_UserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users_UserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemRecord_UserControl));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonRefresh = new System.Windows.Forms.Button();
-            this.button_Add = new System.Windows.Forms.Button();
-            this.button_Edit = new System.Windows.Forms.Button();
             this.button_Delet = new System.Windows.Forms.Button();
             this.button_Export_All = new System.Windows.Forms.Button();
             this.button_Export_dgv = new System.Windows.Forms.Button();
@@ -70,44 +68,12 @@
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // button_Add
-            // 
-            this.button_Add.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Add.Image = ((System.Drawing.Image)(resources.GetObject("button_Add.Image")));
-            this.button_Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Add.Location = new System.Drawing.Point(723, 4);
-            this.button_Add.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(90, 40);
-            this.button_Add.TabIndex = 0;
-            this.button_Add.Text = "إضافة";
-            this.button_Add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.button_Add, "إضافة البيانات");
-            this.button_Add.UseVisualStyleBackColor = true;
-            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_Edit
-            // 
-            this.button_Edit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Edit.Image = ((System.Drawing.Image)(resources.GetObject("button_Edit.Image")));
-            this.button_Edit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Edit.Location = new System.Drawing.Point(629, 4);
-            this.button_Edit.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Edit.Name = "button_Edit";
-            this.button_Edit.Size = new System.Drawing.Size(90, 40);
-            this.button_Edit.TabIndex = 0;
-            this.button_Edit.Text = "تعديل";
-            this.button_Edit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.button_Edit, "تعديل السطر الحالي");
-            this.button_Edit.UseVisualStyleBackColor = true;
-            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
-            // 
             // button_Delet
             // 
             this.button_Delet.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_Delet.Image = ((System.Drawing.Image)(resources.GetObject("button_Delet.Image")));
             this.button_Delet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Delet.Location = new System.Drawing.Point(535, 4);
+            this.button_Delet.Location = new System.Drawing.Point(723, 4);
             this.button_Delet.Margin = new System.Windows.Forms.Padding(2);
             this.button_Delet.Name = "button_Delet";
             this.button_Delet.Size = new System.Drawing.Size(90, 40);
@@ -122,7 +88,7 @@
             // 
             this.button_Export_All.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_Export_All.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Export_All.Location = new System.Drawing.Point(441, 4);
+            this.button_Export_All.Location = new System.Drawing.Point(629, 4);
             this.button_Export_All.Margin = new System.Windows.Forms.Padding(2);
             this.button_Export_All.Name = "button_Export_All";
             this.button_Export_All.Size = new System.Drawing.Size(90, 40);
@@ -131,13 +97,12 @@
             this.button_Export_All.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.button_Export_All, "تصدير كامل البيانات");
             this.button_Export_All.UseVisualStyleBackColor = true;
-            this.button_Export_All.Click += new System.EventHandler(this.button_Export_All_Click);
             // 
             // button_Export_dgv
             // 
             this.button_Export_dgv.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_Export_dgv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Export_dgv.Location = new System.Drawing.Point(347, 4);
+            this.button_Export_dgv.Location = new System.Drawing.Point(535, 4);
             this.button_Export_dgv.Margin = new System.Windows.Forms.Padding(2);
             this.button_Export_dgv.Name = "button_Export_dgv";
             this.button_Export_dgv.Size = new System.Drawing.Size(90, 40);
@@ -146,7 +111,6 @@
             this.button_Export_dgv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.button_Export_dgv, "تصدير بيانات الشبكة فقط ");
             this.button_Export_dgv.UseVisualStyleBackColor = true;
-            this.button_Export_dgv.Click += new System.EventHandler(this.button_Export_dgv_Click);
             // 
             // textBox_Search
             // 
@@ -207,8 +171,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.button_Add);
-            this.flowLayoutPanel1.Controls.Add(this.button_Edit);
             this.flowLayoutPanel1.Controls.Add(this.button_Delet);
             this.flowLayoutPanel1.Controls.Add(this.button_Export_All);
             this.flowLayoutPanel1.Controls.Add(this.button_Export_dgv);
@@ -225,7 +187,7 @@
             // 
             this.panel1.Controls.Add(this.textBox_Search);
             this.panel1.Controls.Add(this.button_Search);
-            this.panel1.Location = new System.Drawing.Point(67, 5);
+            this.panel1.Location = new System.Drawing.Point(255, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(275, 40);
             this.panel1.TabIndex = 1;
@@ -288,9 +250,9 @@
             // 
             this.panel_Pages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel_Pages.BackColor = System.Drawing.Color.White;
-            this.panel_Pages.Controls.Add(this.button_prevew);
             this.panel_Pages.Controls.Add(this.labelAllNo);
             this.panel_Pages.Controls.Add(this.comboBox_noOfPage);
+            this.panel_Pages.Controls.Add(this.button_prevew);
             this.panel_Pages.Controls.Add(this.button_next);
             this.panel_Pages.Location = new System.Drawing.Point(12, 363);
             this.panel_Pages.Name = "panel_Pages";
@@ -308,7 +270,7 @@
             this.labelAllNo.Text = "...";
             this.labelAllNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Users_UserControl
+            // SystemRecord_UserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -318,7 +280,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Users_UserControl";
+            this.Name = "SystemRecord_UserControl";
             this.Size = new System.Drawing.Size(819, 387);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -335,8 +297,7 @@
 
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button_Add;
-        private System.Windows.Forms.Button button_Edit;
+   
         private System.Windows.Forms.Button button_Delet;
         private System.Windows.Forms.Button button_Export_All;
         private System.Windows.Forms.Panel panel1;

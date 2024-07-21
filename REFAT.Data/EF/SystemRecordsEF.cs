@@ -83,7 +83,7 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.SystemRecords.ToList();
+                return db.SystemRecords.OrderByDescending(l => l.Id).ToList();
             }
             catch 
             {
@@ -98,7 +98,7 @@ namespace REFAT.Data.EF
             {
                 db = new DBContext();
 
-                return db.SystemRecords.Where(l=>l.UserId == UserId).ToList();
+                return db.SystemRecords.Where(l=>l.UsersId.ToString() == UserId).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {
@@ -117,13 +117,13 @@ namespace REFAT.Data.EF
             try
             {
                 return db.SystemRecords.Where (l=> l.Id.ToString() == searchItem 
-                 || l.UserId == searchItem
+                 || l.UsersId.ToString() == searchItem
                  || l.FullName.Contains ( searchItem)
                  || l.MachinId.Contains(searchItem)
                  || l.Title.Contains(searchItem)
                  || l.Desiccation.Contains(searchItem)
-                 || l.CreatedDate.ToShortDateString().Contains(searchItem)
-                 ).ToList();
+                 || l.CreatedDate.ToString().Contains(searchItem)
+                 ).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {
@@ -136,14 +136,14 @@ namespace REFAT.Data.EF
         {
             try
             {
-                return db.SystemRecords.Where(u=> u.UserId == UserId).Where(l => l.Id.ToString() == searchItem
-                 || l.UserId == searchItem
+                return db.SystemRecords.Where(u=> u.UsersId.ToString() == UserId).Where(l => l.Id.ToString() == searchItem
+                 || l.UsersId.ToString() == searchItem
                  || l.FullName.Contains(searchItem)
                  || l.MachinId.Contains(searchItem)
                  || l.Title.Contains(searchItem)
                  || l.Desiccation.Contains(searchItem)
-                 || l.CreatedDate.ToShortDateString().Contains(searchItem)
-                 ).ToList();
+            || l.CreatedDate.ToString().Contains(searchItem)
+                 ).OrderByDescending(l => l.Id).ToList();
             }
             catch
             {

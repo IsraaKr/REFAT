@@ -15,7 +15,7 @@ namespace REFAT.GUI.ToastGui
         public static string Description;
         public ToastForm()
         {
-            //لانو في هايد ماعاد يستدعي المسيد مرة تانية بس اول تشغيل
+            //لانو في هايد ماعاد \تدعي المسيد مرة تانية بس اول تشغيل
             InitializeComponent();
            
         }
@@ -25,7 +25,7 @@ namespace REFAT.GUI.ToastGui
 
             Title = tiltle;
             Description = desecription;
-            return toastForm ?? (new ToastForm());
+            return toastForm ?? (toastForm= new ToastForm());
         }
 
         private void timerToaste_Tick(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace REFAT.GUI.ToastGui
         {
             timerToaste.Interval = Properties.Settings.Default.ToastDuration;
             labelTitle.Text = Title;
-            labelDescription.Text = Title;
+            labelDescription.Text = Description;
             timerToaste.Enabled = true;
 
         }

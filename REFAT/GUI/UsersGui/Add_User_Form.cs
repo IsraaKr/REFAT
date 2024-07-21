@@ -22,6 +22,7 @@ namespace REFAT.GUI.UsersGui
         private readonly IDataHelper<SystemRecords> dataHelperSystemRecord;
         private readonly Main main;
         private int Id;
+        private DateTime UserCreatedDate;
         private readonly Users_UserControl Page;
 
         public Add_User_Form(Main main, int id, Users_UserControl page)
@@ -44,66 +45,7 @@ namespace REFAT.GUI.UsersGui
         }
 
 
-        private void checkBox_IS_secondarey_CheckedChanged(object sender, EventArgs e)
-        {
-            if (LocalUser.Role == "Admin")
-                comboBox_UsersId.Enabled = checkBoxSeconderyUser.Checked;
-            else
-            {
-                comboBox_UsersId.Enabled = false;
-            }
-        }
-        private async void button_Save_ClickAsync(object sender, EventArgs e)
-        {
-            //cheack fields
-            if (IsValid())
-            {
-                MsgHelper.ShowRequierdfileds();
-            }
-            else
-            {
-                //show loading 
-                LoadingForm.Instance(main).Show();
-
-                //check connecton
-                if (await Task.Run(() => dataHelperUser.IsCanConnect()))
-                {
-                    //check duplicated item
-                    string fullName = textBoxFull_name.Text;
-                    string userName = textBox_UserName.Text;
-                    var result = await Task.Run(() => dataHelperUser.GetAllData()
-                      .Where(l => l.Id != Id)
-                      .Where(l => l.FullName == fullName || l.UserName == userName)
-                      .FirstOrDefault() ?? new Users());
-                    if (result.Id > 0)
-                    {
-                        LoadingForm.Instance(main).Hide();
-                        MsgHelper.ShowDuplicatedItems();
-                    }
-                    else
-                    {
-                        //add or edite
-                        if (Id == 0)
-                            Add();
-                        else
-                        {
-                            Edit();
-                        }
-                    }
-                }
-                else
-                {
-                    LoadingForm.Instance(main).Hide();
-
-                    MsgHelper.ShowServerError();
-
-                }
-                LoadingForm.Instance(main).Hide();
-
-            }
-
-        }
-
+    
         private async void Add()
         {//set user
             Users users = new Users
@@ -139,6 +81,9 @@ namespace REFAT.GUI.UsersGui
                     //send role
                     await Task.Run(() => dataHelperRoles.Add(roles));
                 }
+
+                //success
+                SystemRecordHelper.Add("إضافة مستخدم",$" تم إضافة مستخدم  برقم تعريفي{users.Id} ");
                 Page.LoadData();//تحديث البيانات 
                 ToastHelper.showAddToast();
                 this.Close();
@@ -163,7 +108,7 @@ namespace REFAT.GUI.UsersGui
                 Email = textBox_Email.Text,
                 Phone = textBox_Phone.Text,
                 Address = textBox_Adress.Text,
-              //  CreatedDate = _user.CreatedDate,
+               CreatedDate = UserCreatedDate,
                 EditedDate = DateTime.Now.Date,
                 Role = comboBox_Role.SelectedItem.ToString() ?? "User",//اذا فاضي اختار يوزر
                 IsSecondaryUser = checkBoxSeconderyUser.Checked,
@@ -195,6 +140,9 @@ namespace REFAT.GUI.UsersGui
                     //send role
                     await Task.Run(() => dataHelperRoles.Add(roles));
                 }
+                //success
+                SystemRecordHelper.Add("تعديل مستخدم", $" تم تعديل مستخدم  برقم تعريفي{users.Id} ");
+
                 Page.LoadData();//تحديث البيانات 
                 ToastHelper.showEditToast();
                 this.Close();
@@ -221,7 +169,9 @@ namespace REFAT.GUI.UsersGui
                 textBox_Adress.Text = _user.Address;
                 comboBox_Role.SelectedItem = _user.Role;
                 checkBoxSeconderyUser.Checked = _user.IsSecondaryUser;
+                UserCreatedDate = _user.CreatedDate;
             }
+            
             //set roles
             foreach (var item in flowLayoutPanel_Roles.Controls)
             {
@@ -313,5 +263,68 @@ namespace REFAT.GUI.UsersGui
             }
         }
 
+        //Methodes
+     
+        private async void button_Save_ClickAsync(object sender, EventArgs e)
+        {
+            //cheack fields
+            if (!IsValid())
+            {
+                MsgHelper.ShowRequierdfileds();
+            }
+            else
+            {
+                //show loading 
+                LoadingForm.Instance(main).Show();
+
+                //check connecton
+                if (await Task.Run(() => dataHelperUser.IsCanConnect()))
+                {
+                    //check duplicated item♥
+                    string fullName = textBoxFull_name.Text;
+                    string userName = textBox_UserName.Text;
+                    var result = await Task.Run(() => dataHelperUser.GetAllData()
+                      .Where(l => l.Id != Id)
+                      .Where(l => l.FullName == fullName || l.UserName == userName)
+                      .FirstOrDefault() ?? new Users());
+                    if (result.Id > 0)
+                    {
+                        LoadingForm.Instance(main).Hide();
+                        MsgHelper.ShowDuplicatedItems();
+                    }
+                    else
+                    {
+                        //add or edite
+                        if (Id == 0)
+                            Add();
+                        else
+                        {
+                            Edit();
+                        }
+                    }
+                }
+                else
+                {
+                    LoadingForm.Instance(main).Hide();
+
+                    MsgHelper.ShowServerError();
+
+                }
+                LoadingForm.Instance(main).Hide();
+
+            }
+
+        }
+
+
+        private void checkBoxSeconderyUser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LocalUser.Role == "Admin")
+                comboBox_UsersId.Enabled = checkBoxSeconderyUser.Checked;
+            else
+            {
+                comboBox_UsersId.Enabled = false;
+            }
+        }
     }
 }

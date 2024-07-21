@@ -23,6 +23,8 @@ namespace REFAT
 
             //get and set windows state from setting
             set_secreen_state(Properties.Settings.Default.Is_Max_Secreen);
+
+            setRole();
         }
         //test
         private void setRole()
@@ -30,6 +32,8 @@ namespace REFAT
             Code.Models.LocalUser.UserId = "111234";
             Code.Models.LocalUser.Id = 1;
             Code.Models.LocalUser.Role = "Admin";
+            Code.Models.LocalUser.FullName = "fullName";
+            Code.Models.LocalUser.UserName = "userName";
 
 
         }
@@ -74,11 +78,13 @@ namespace REFAT
 
         private void button_SAlarey_Click(object sender, EventArgs e)
         {
+            pageHelper.SetPage(GUI.SalryRateGui.SalaryRate_UserControl.instance(this));
 
         }
 
         private void button_Emp_Click(object sender, EventArgs e)
         {
+            pageHelper.SetPage(GUI.EmployesGui.Employes_UserControl.instance(this));
 
         }
 
@@ -90,6 +96,10 @@ namespace REFAT
         private void button_Setting_Click(object sender, EventArgs e)
         {
 
+        }
+        private void buttonSystemRecord_Click(object sender, EventArgs e)
+        {
+            pageHelper.SetPage(GUI.SystemRecordGui.SystemRecord_UserControl.instance(this));
         }
 
         private void button_Help_Click(object sender, EventArgs e)
